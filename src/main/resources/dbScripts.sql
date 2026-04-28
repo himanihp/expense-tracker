@@ -1,0 +1,12 @@
+use expensetrackerdb;
+select * from expenses;
+
+SHOW CREATE TABLE expenses;
+
+ALTER TABLE expenses
+ADD PRIMARY KEY (ID);
+
+ALTER TABLE expenses
+MODIFY ID int NOT NULL AUTO_INCREMENT;
+
+--CREATE TABLE `expenses` (`ID` int NOT NULL, `EXPENSE_TYPE` tinyint DEFAULT NULL, `EXPENSE_DATE` date DEFAULT NULL, `AMOUNT` float DEFAULT NULL, `CATEGORY` tinyint DEFAULT NULL, `DESCRIPTION` varchar(255) DEFAULT NULL)
