@@ -9,7 +9,8 @@ public class InputUtil {
         System.out.println("Press 1 for creating New Entry");
         System.out.println("Press 2 for searching an entry");
         System.out.println("Press 3 to update an entry");
-        System.out.println("Press 4 to delete an entry\n");
+        System.out.println("Press 4 to delete an entry");
+        System.out.println("Press 5 to calculate net transaction amount\n");
         return sc.nextInt();
     }
 
@@ -17,6 +18,13 @@ public class InputUtil {
         ExpenseTrackerDto expenseTrackerDto = new ExpenseTrackerDto();
         System.out.println("Please enter the amount");
         expenseTrackerDto.setAmount(sc.nextFloat());
+        return expenseTrackerDto;
+    }
+
+    public static ExpenseTrackerDto acceptUpdatedExpenseDetails(Scanner sc) {
+        ExpenseTrackerDto expenseTrackerDto = new ExpenseTrackerDto();
+//        System.out.println("Please enter the amount");
+//        expenseTrackerDto.setAmount(sc.nextFloat());
         return expenseTrackerDto;
     }
 }

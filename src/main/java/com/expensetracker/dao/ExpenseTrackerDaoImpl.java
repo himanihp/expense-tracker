@@ -1,6 +1,7 @@
 package com.expensetracker.dao;
 
 import com.expensetracker.config.DatabaseConfig;
+import com.expensetracker.dto.ExpenseTrackerDto;
 import com.expensetracker.entity.ExpenseTrackerEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,5 +16,10 @@ public class ExpenseTrackerDaoImpl implements ExpenseTrackerDao{
             session.persist(expenseEntity);
             tx.commit();
         }
+    }
+
+    @Override
+    public void updateEntry(ExpenseTrackerDto expense) {
+
     }
 }

@@ -15,4 +15,9 @@ public class ExpenseTrackerServiceImpl implements ExpenseTrackerService {
         expenseTrackerDao.saveEntry(expenseEntity);
         System.out.println("Expense saved successfully.");
     }
+
+    @Override
+    public void updateEntry(ExpenseTrackerDto expense) {
+
+    }
 }
