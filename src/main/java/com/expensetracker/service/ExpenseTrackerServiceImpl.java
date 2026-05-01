@@ -4,25 +4,30 @@ import com.expensetracker.dao.ExpenseTrackerDao;
 import com.expensetracker.dao.ExpenseTrackerDaoImpl;
 import com.expensetracker.dto.ExpenseTrackerDto;
 import com.expensetracker.entity.ExpenseTrackerEntity;
+import com.expensetracker.util.MapperUtil;
 
 public class ExpenseTrackerServiceImpl implements ExpenseTrackerService {
 
     ExpenseTrackerDao expenseTrackerDao = new ExpenseTrackerDaoImpl();
     @Override
-    public void saveEntry(ExpenseTrackerDto expense) {
-        ExpenseTrackerEntity expenseEntity = new ExpenseTrackerEntity();
-        expenseEntity.setAmount(expense.getAmount());
-        expenseEntity.setDescription(expense.getDescription());
-        expenseEntity.setExpenseDate(expense.getExpenseDate());
-        expenseEntity.setExpenseType(expense.getExpenseType());
-        expenseEntity.setCategory(expense.getCategory());
-        expenseEntity.setSource(expense.getSource());
-        expenseTrackerDao.saveEntry(expenseEntity);
+    public void saveExpense(ExpenseTrackerDto expenseDto) {
+        expenseTrackerDao.saveExpense(MapperUtil.mapExpenseDTOtoEntity(expenseDto));
         System.out.println("Expense saved successfully.");
     }
 
     @Override
-    public void updateEntry(ExpenseTrackerDto expense) {
+    public void updateExpense(ExpenseTrackerDto expenseDto) {
 
+    }
+
+    @Override
+    public ExpenseTrackerDto readExpenseById(int expenseId) {
+        ExpenseTrackerEntity expenseTrackerEntity = expenseTrackerDao.readExpenseById(expenseId);
+        return MapperUtil.mapExpenseEntityToDTO(expenseTrackerEntity);
+    }
+
+    @Override
+    public void deleteExpenseById(int expenseId) {
+        expenseTrackerDao.deleteExpenseById(expenseId);
     }
 }

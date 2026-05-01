@@ -55,21 +55,20 @@ public class InputUtil {
     }
 
     public static LocalDateTime resolveExpenseDateTime(String inputDateString) {
-        LocalDateTime expenseDate = null;
         if (inputDateString != null && !inputDateString.isEmpty()) {
             if (inputDateString.equalsIgnoreCase("T")) {
-                expenseDate = LocalDateTime.now();
+                return LocalDateTime.now();
             } else
-                expenseDate = FunctionUtil.stringToLocalDateTime(inputDateString);
+                return FunctionUtil.stringToLocalDateTime(inputDateString);
         }
-        return expenseDate;
+        return null;
     }
 
     public static boolean shouldContinue(Scanner sc, boolean invalidInput) {
         if (invalidInput) {
             return true;
         }
-        System.out.println("Press 'C' if you want to continue...");
+        System.out.println("Press 'C' to continue or 'E' to exit");
         return "C".equalsIgnoreCase(sc.next());
     }
 
@@ -78,5 +77,10 @@ public class InputUtil {
 //        System.out.println("Please enter the amount");
 //        expenseTrackerDto.setAmount(sc.nextFloat());
         return expenseTrackerDto;
+    }
+
+    public static int acceptIdToSearch(Scanner sc) {
+        System.out.println("Please enter 'ID' of the expense...");
+        return sc.nextInt();
     }
 }

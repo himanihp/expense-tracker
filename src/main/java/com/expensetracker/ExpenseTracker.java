@@ -15,7 +15,7 @@ public class ExpenseTracker {
 
     private void run() {
 
-        ExpenseTrackerService ExpenseTrackerService = new ExpenseTrackerServiceImpl();
+        ExpenseTrackerService expenseTrackerService = new ExpenseTrackerServiceImpl();
         boolean invalidInput = false;
 
         try (Scanner sc = new Scanner(System.in)) {
@@ -25,20 +25,24 @@ public class ExpenseTracker {
                 switch (selectedOption) {
                     case 1: {
                         ExpenseTrackerDto expense = InputUtil.acceptExpenseDetails(sc);
-                        ExpenseTrackerService.saveEntry(expense);
+                        expenseTrackerService.saveExpense(expense);
                         break;
                     }
                     case 2: {
-                        System.out.println("Search Functionality will be added soon...");
+                        int expenseId = InputUtil.acceptIdToSearch(sc);
+                        ExpenseTrackerDto expenseDto = expenseTrackerService.readExpenseById(expenseId);
+                        System.out.println("Expense fetched : " + expenseDto);
                         break;
                     }
                     case 3: {
                         ExpenseTrackerDto expense = InputUtil.acceptUpdatedExpenseDetails(sc);
-                        ExpenseTrackerService.updateEntry(expense);
+                        expenseTrackerService.updateExpense(expense);
                         break;
                     }
                     case 4: {
-                        System.out.println("Delete Functionality will be added soon...");
+                        int expenseId = InputUtil.acceptIdToSearch(sc);
+                        expenseTrackerService.deleteExpenseById(expenseId);
+                        System.out.println("Expense deleted successfully!");
                         break;
                     }
                     case 5: {
