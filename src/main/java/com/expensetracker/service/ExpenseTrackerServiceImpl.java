@@ -12,6 +12,11 @@ public class ExpenseTrackerServiceImpl implements ExpenseTrackerService {
     public void saveEntry(ExpenseTrackerDto expense) {
         ExpenseTrackerEntity expenseEntity = new ExpenseTrackerEntity();
         expenseEntity.setAmount(expense.getAmount());
+        expenseEntity.setDescription(expense.getDescription());
+        expenseEntity.setExpenseDate(expense.getExpenseDate());
+        expenseEntity.setExpenseType(expense.getExpenseType());
+        expenseEntity.setCategory(expense.getCategory());
+        expenseEntity.setSource(expense.getSource());
         expenseTrackerDao.saveEntry(expenseEntity);
         System.out.println("Expense saved successfully.");
     }

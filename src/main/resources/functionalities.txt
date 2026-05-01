@@ -1,0 +1,39 @@
+GOAL:   To add daily transactions in a database.
+        First through console, then create a UI screen/webpage for the same.
+
+DB STRUCTURE:
+
+Expense table -
+PK ID
+Date
+Amount
+Expense Type
+Category
+Description
+Source -- not added yet
+
+Category table -
+PK ID
+Category Name
+Category Type - Income/Expense
+Parent Category Id
+Is_Subcategory
+
+FUNCTIONS:
+
+SaveRecord - different categories to be loaded for diff expense type
+FetchRecord/ SearchRecord - search through diff info like date, date range, desc, category
+UpdateRecord
+DeleteRecord
+CalculateTotalExpense
+AddNewCategory
+
+INPUT:
+Ask for all functionalities then ask if wants to continue or escape?
+If wrong input then a message and repeat scanner
+
+CREATE CUSTOM EXCEPTIONS
+
+ADD LOGGER FRAMEWORK
+
+TRACK COMMIT & PUSH hibernate.properties WITHOUT THE PASSWORD

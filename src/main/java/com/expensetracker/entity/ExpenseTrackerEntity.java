@@ -2,10 +2,11 @@ package com.expensetracker.entity;
 
 import com.expensetracker.enums.Category;
 import com.expensetracker.enums.ExpenseType;
+import com.expensetracker.enums.Source;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "expenses")
@@ -17,13 +18,15 @@ public class ExpenseTrackerEntity implements Serializable {
     @Column(name = "EXPENSE_TYPE")
     private ExpenseType expenseType;
     @Column(name = "EXPENSE_DATE")
-    private LocalDate expenseDate;
+    private LocalDateTime expenseDate;
     @Column(name = "AMOUNT")
     private float amount;
     @Column(name = "CATEGORY")
     private Category category;
     @Column(name = "DESCRIPTION")
     private String description;
+    @Column(name = "SOURCE")
+    private Source source;
 
     public int getId() {
         return id;
@@ -41,11 +44,11 @@ public class ExpenseTrackerEntity implements Serializable {
         this.expenseType = expenseType;
     }
 
-    public LocalDate getExpenseDate() {
+    public LocalDateTime getExpenseDate() {
         return expenseDate;
     }
 
-    public void setExpenseDate(LocalDate expenseDate) {
+    public void setExpenseDate(LocalDateTime expenseDate) {
         this.expenseDate = expenseDate;
     }
 
@@ -73,6 +76,14 @@ public class ExpenseTrackerEntity implements Serializable {
         this.description = description;
     }
 
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
+
     @Override
     public String toString() {
         return "ExpenseTrackerEntity{" +
@@ -82,6 +93,7 @@ public class ExpenseTrackerEntity implements Serializable {
                 ", amount=" + amount +
                 ", category=" + category +
                 ", description='" + description + '\'' +
+                ", source=" + source +
                 '}';
     }
 }

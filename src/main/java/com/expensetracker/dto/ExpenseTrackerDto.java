@@ -2,17 +2,19 @@ package com.expensetracker.dto;
 
 import com.expensetracker.enums.Category;
 import com.expensetracker.enums.ExpenseType;
+import com.expensetracker.enums.Source;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ExpenseTrackerDto {
 
     private int id;
     private ExpenseType expenseType;
-    private LocalDate expenseDate;
+    private LocalDateTime expenseDate;
     private float amount;
     private Category category;
     private String description;
+    private Source source;
 
     public int getId() {
         return id;
@@ -30,11 +32,11 @@ public class ExpenseTrackerDto {
         this.expenseType = expenseType;
     }
 
-    public LocalDate getExpenseDate() {
+    public LocalDateTime getExpenseDate() {
         return expenseDate;
     }
 
-    public void setExpenseDate(LocalDate expenseDate) {
+    public void setExpenseDate(LocalDateTime expenseDate) {
         this.expenseDate = expenseDate;
     }
 
@@ -62,15 +64,24 @@ public class ExpenseTrackerDto {
         this.description = description;
     }
 
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
+
     @Override
     public String toString() {
-        return "ExpenseTrackerEntity{" +
+        return "ExpenseTrackerDto{" +
                 "id=" + id +
                 ", expenseType=" + expenseType +
                 ", expenseDate=" + expenseDate +
                 ", amount=" + amount +
                 ", category=" + category +
                 ", description='" + description + '\'' +
+                ", source=" + source +
                 '}';
     }
 }
