@@ -73,8 +73,7 @@ public class InputUtil {
         return "C".equalsIgnoreCase(sc.next());
     }
 
-    public static ExpenseTrackerDto acceptUpdatedExpenseDetails(Scanner sc) {
-        ExpenseTrackerDto expenseTrackerDto = new ExpenseTrackerDto();
+    public static ExpenseTrackerDto acceptUpdatedExpenseDetails(ExpenseTrackerDto expenseTrackerDto, Scanner sc) {
         List<String> updateOptions = acceptFieldsToUpdate(sc);
         for (String option : updateOptions) {
             switch(option) {
@@ -102,7 +101,7 @@ public class InputUtil {
                 }
                 case "5" : {
                     System.out.println("Please enter updated Description");
-                    sc.nextLine(); //todo correct the redundant input because of next();
+                    sc.nextLine(); // TODO: correct the redundant input because of next();
                     expenseTrackerDto.setDescription(sc.nextLine());
                     break;
                 }

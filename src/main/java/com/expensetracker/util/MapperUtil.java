@@ -19,7 +19,6 @@ public class MapperUtil {
 
     public static ExpenseTrackerDto mapExpenseEntityToDTO(ExpenseTrackerEntity expenseTrackerEntity) {
         ExpenseTrackerDto expenseDto = new ExpenseTrackerDto();
-        // @todo map only relevant methods
         expenseDto.setId(expenseTrackerEntity.getId());
         expenseDto.setAmount(expenseTrackerEntity.getAmount());
         expenseDto.setDescription(expenseTrackerEntity.getDescription());

@@ -19,7 +19,6 @@ public class ExpenseTrackerDaoImpl implements ExpenseTrackerDao{
 
     @Override
     public void updateExpense(ExpenseTrackerEntity expenseEntity) {
-        System.out.println("Debug Log: " + expenseEntity);
         try(Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             session.merge(expenseEntity);
@@ -30,8 +29,7 @@ public class ExpenseTrackerDaoImpl implements ExpenseTrackerDao{
     @Override
     public ExpenseTrackerEntity readExpenseById(int expenseId) {
         try(Session session = sessionFactory.openSession()) {
-            ExpenseTrackerEntity expenseTrackerEntity = session.find(ExpenseTrackerEntity.class, expenseId);
-            return expenseTrackerEntity;
+            return session.find(ExpenseTrackerEntity.class, expenseId);
         }
     }
 

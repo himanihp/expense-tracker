@@ -30,20 +30,20 @@ public class ExpenseTracker {
                     }
                     case 2: {
                         int expenseId = InputUtil.acceptIdToSearch(sc);
-                        ExpenseTrackerDto expenseDto = expenseTrackerService.readExpenseById(expenseId);
-                        System.out.println("Expense fetched : " + expenseDto);
+                        expenseTrackerService.readExpenseById(expenseId);
                         break;
                     }
                     case 3: {
                         int expenseId = InputUtil.acceptIdToSearch(sc);
-                        ExpenseTrackerDto expenseDto = InputUtil.acceptUpdatedExpenseDetails(sc);
+                        ExpenseTrackerDto expenseDto = expenseTrackerService.readExpenseById(expenseId);
+                        System.out.println("Debug Log: Updated values are- " + expenseDto);
+                        expenseDto = InputUtil.acceptUpdatedExpenseDetails(expenseDto, sc);
                         expenseTrackerService.updateExpense(expenseDto,expenseId);
                         break;
                     }
                     case 4: {
                         int expenseId = InputUtil.acceptIdToSearch(sc);
                         expenseTrackerService.deleteExpenseById(expenseId);
-                        System.out.println("Expense deleted successfully!");
                         break;
                     }
                     case 5: {
