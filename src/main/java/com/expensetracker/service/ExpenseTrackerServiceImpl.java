@@ -16,8 +16,12 @@ public class ExpenseTrackerServiceImpl implements ExpenseTrackerService {
     }
 
     @Override
-    public void updateExpense(ExpenseTrackerDto expenseDto) {
-
+    public void updateExpense(ExpenseTrackerDto expenseDto, int expenseId) {
+        expenseDto.setId(expenseId);
+        System.out.println("Debug Log: " + expenseDto); // todo: check this! amount is saving as 0, find/fetch/read by id and print, check nextInt() etc inputs, test with diff data
+        // todo- data field having null values is updated? or it remains the same as before?
+        expenseTrackerDao.updateExpense(MapperUtil.mapExpenseDTOtoEntity(expenseDto));
+        System.out.println("Expense updated successfully.");
     }
 
     @Override

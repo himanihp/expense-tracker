@@ -19,7 +19,12 @@ public class ExpenseTrackerDaoImpl implements ExpenseTrackerDao{
 
     @Override
     public void updateExpense(ExpenseTrackerEntity expenseEntity) {
-
+        System.out.println("Debug Log: " + expenseEntity);
+        try(Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            session.merge(expenseEntity);
+            tx.commit();
+        }
     }
 
     @Override

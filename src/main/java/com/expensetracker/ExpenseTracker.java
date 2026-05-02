@@ -35,8 +35,9 @@ public class ExpenseTracker {
                         break;
                     }
                     case 3: {
-                        ExpenseTrackerDto expense = InputUtil.acceptUpdatedExpenseDetails(sc);
-                        expenseTrackerService.updateExpense(expense);
+                        int expenseId = InputUtil.acceptIdToSearch(sc);
+                        ExpenseTrackerDto expenseDto = InputUtil.acceptUpdatedExpenseDetails(sc);
+                        expenseTrackerService.updateExpense(expenseDto,expenseId);
                         break;
                     }
                     case 4: {

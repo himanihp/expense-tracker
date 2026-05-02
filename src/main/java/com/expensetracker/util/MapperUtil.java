@@ -5,20 +5,22 @@ import com.expensetracker.entity.ExpenseTrackerEntity;
 
 public class MapperUtil {
 
-    public static ExpenseTrackerEntity mapExpenseDTOtoEntity (ExpenseTrackerDto expense) {
+    public static ExpenseTrackerEntity mapExpenseDTOtoEntity (ExpenseTrackerDto expenseDto) {
         ExpenseTrackerEntity expenseEntity = new ExpenseTrackerEntity();
-        expenseEntity.setAmount(expense.getAmount());
-        expenseEntity.setDescription(expense.getDescription());
-        expenseEntity.setExpenseDate(expense.getExpenseDate());
-        expenseEntity.setExpenseType(expense.getExpenseType());
-        expenseEntity.setCategory(expense.getCategory());
-        expenseEntity.setSource(expense.getSource());
+        expenseEntity.setId(expenseDto.getId());
+        expenseEntity.setAmount(expenseDto.getAmount());
+        expenseEntity.setDescription(expenseDto.getDescription());
+        expenseEntity.setExpenseDate(expenseDto.getExpenseDate());
+        expenseEntity.setExpenseType(expenseDto.getExpenseType());
+        expenseEntity.setCategory(expenseDto.getCategory());
+        expenseEntity.setSource(expenseDto.getSource());
         return expenseEntity;
     }
 
     public static ExpenseTrackerDto mapExpenseEntityToDTO(ExpenseTrackerEntity expenseTrackerEntity) {
         ExpenseTrackerDto expenseDto = new ExpenseTrackerDto();
         // @todo map only relevant methods
+        expenseDto.setId(expenseTrackerEntity.getId());
         expenseDto.setAmount(expenseTrackerEntity.getAmount());
         expenseDto.setDescription(expenseTrackerEntity.getDescription());
         expenseDto.setExpenseDate(expenseTrackerEntity.getExpenseDate());
