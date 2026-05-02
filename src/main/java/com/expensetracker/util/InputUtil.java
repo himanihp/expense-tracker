@@ -18,7 +18,7 @@ public class InputUtil {
         System.out.println("Press 4 to delete an entry");
         System.out.println("Press 5 to calculate net transaction amount");
         System.out.println("Press 6 to add a new category\n");
-        return sc.nextInt();
+        return Integer.parseInt(sc.nextLine());
     }
 
     public static ExpenseTrackerDto acceptExpenseDetails(Scanner sc) {
@@ -70,46 +70,47 @@ public class InputUtil {
             return true;
         }
         System.out.println("Press 'C' to continue or 'E' to exit");
-        return "C".equalsIgnoreCase(sc.next());
+        return "C".equalsIgnoreCase(sc.nextLine());
     }
 
     public static ExpenseTrackerDto acceptUpdatedExpenseDetails(ExpenseTrackerDto expenseTrackerDto, Scanner sc) {
-        List<String> updateOptions = acceptFieldsToUpdate(sc);
-        for (String option : updateOptions) {
-            switch(option) {
-                case "1" : {
-                    System.out.println("Please enter updated Date (Type 'T' for Today's Date or in 'YYYY-MM-DD' format): ");
-                    expenseTrackerDto.setExpenseDate(resolveExpenseDateTime(sc.nextLine()));
-                    break;
-                }
-                case "2" : {
-                    System.out.println("Please enter updated Amount");
-                    expenseTrackerDto.setAmount(sc.nextFloat());
-                    break;
-                }
-                case "3" : {
-                    System.out.println("Please enter updated Expense Type - " + Arrays.toString(ExpenseType.values()));
-                    String expenseType = FunctionUtil.toSentenceCase(sc.next());
-                    expenseTrackerDto.setExpenseType(ExpenseType.valueOf(expenseType));
-                    break;
-                }
-                case "4" : {
-                    System.out.println("Please enter updated Source - " + Arrays.toString(Source.values()));
-                    String source = FunctionUtil.toSentenceCase(sc.next());
-                    expenseTrackerDto.setSource(Source.valueOf(source));
-                    break;
-                }
-                case "5" : {
-                    System.out.println("Please enter updated Description");
-                    sc.nextLine(); // TODO: correct the redundant input because of next();
-                    expenseTrackerDto.setDescription(sc.nextLine());
-                    break;
-                }
-                case "6" : {
-                    System.out.println("Please enter updated Category - " + Arrays.toString(Category.values()));
-                    String category = FunctionUtil.toSentenceCase(sc.next());
-                    expenseTrackerDto.setCategory(Category.valueOf(category));
-                    break;
+        if (expenseTrackerDto != null) {
+            List<String> updateOptions = acceptFieldsToUpdate(sc);
+            for (String option : updateOptions) {
+                switch(option) {
+                    case "1" : {
+                        System.out.println("Please enter updated Date (Type 'T' for Today's Date or in 'YYYY-MM-DD' format): ");
+                        expenseTrackerDto.setExpenseDate(resolveExpenseDateTime(sc.nextLine()));
+                        break;
+                    }
+                    case "2" : {
+                        System.out.println("Please enter updated Amount");
+                        expenseTrackerDto.setAmount(Float.parseFloat(sc.nextLine()));
+                        break;
+                    }
+                    case "3" : {
+                        System.out.println("Please enter updated Expense Type - " + Arrays.toString(ExpenseType.values()));
+                        String expenseType = FunctionUtil.toSentenceCase(sc.nextLine().trim());
+                        expenseTrackerDto.setExpenseType(ExpenseType.valueOf(expenseType));
+                        break;
+                    }
+                    case "4" : {
+                        System.out.println("Please enter updated Source - " + Arrays.toString(Source.values()));
+                        String source = FunctionUtil.toSentenceCase(sc.nextLine());
+                        expenseTrackerDto.setSource(Source.valueOf(source));
+                        break;
+                    }
+                    case "5" : {
+                        System.out.println("Please enter updated Description");
+                        expenseTrackerDto.setDescription(sc.nextLine());
+                        break;
+                    }
+                    case "6" : {
+                        System.out.println("Please enter updated Category - " + Arrays.toString(Category.values()));
+                        String category = FunctionUtil.toSentenceCase(sc.nextLine());
+                        expenseTrackerDto.setCategory(Category.valueOf(category));
+                        break;
+                    }
                 }
             }
         }
@@ -124,13 +125,12 @@ public class InputUtil {
         System.out.println("4 to update the Source");
         System.out.println("5 to update the Description");
         System.out.println("6 to update the Category\n");
-        sc.nextLine();
         String updateOptions = sc.nextLine();
         return List.of(updateOptions.split(","));
     }
 
     public static int acceptIdToSearch(Scanner sc) {
         System.out.println("Please enter 'ID' of the expense...");
-        return sc.nextInt();
+        return Integer.parseInt(sc.nextLine());
     }
 }

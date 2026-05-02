@@ -36,9 +36,11 @@ public class ExpenseTracker {
                     case 3: {
                         int expenseId = InputUtil.acceptIdToSearch(sc);
                         ExpenseTrackerDto expenseDto = expenseTrackerService.readExpenseById(expenseId);
-                        System.out.println("Debug Log: Updated values are- " + expenseDto);
-                        expenseDto = InputUtil.acceptUpdatedExpenseDetails(expenseDto, sc);
-                        expenseTrackerService.updateExpense(expenseDto,expenseId);
+                        if (expenseDto !=null) {
+                            expenseDto = InputUtil.acceptUpdatedExpenseDetails(expenseDto, sc);
+                            System.out.println("Debug Log: Updated values are- " + expenseDto);
+                            expenseTrackerService.updateExpense(expenseDto, expenseId);
+                        }
                         break;
                     }
                     case 4: {

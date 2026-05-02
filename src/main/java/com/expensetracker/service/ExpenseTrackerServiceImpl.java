@@ -25,9 +25,13 @@ public class ExpenseTrackerServiceImpl implements ExpenseTrackerService {
     @Override
     public ExpenseTrackerDto readExpenseById(int expenseId) {
         ExpenseTrackerEntity expenseTrackerEntity = expenseTrackerDao.readExpenseById(expenseId);
-        ExpenseTrackerDto expenseDto = MapperUtil.mapExpenseEntityToDTO(expenseTrackerEntity);
-        System.out.println("Expense fetched : " + expenseDto);
-        return expenseDto;
+        if (expenseTrackerEntity !=null) {
+            ExpenseTrackerDto expenseDto = MapperUtil.mapExpenseEntityToDTO(expenseTrackerEntity);
+            System.out.println("Expense fetched : " + expenseDto);
+            return expenseDto;
+        }
+        System.out.println("No Entry found for the given Expense Id.");
+        return null;
     }
 
     @Override
